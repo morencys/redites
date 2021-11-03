@@ -9,9 +9,10 @@ $("#AjouterPost").click(function () {
 });
 
 
-$(document).ready(function () {
-    $("button").click(function () {
-        $idButton = "#" + this.id
+$("button").click(function () {
+    $idButton = "#" + this.id;
+    $test = $idButton.replace(/\d+/g, '')
+    if ($test === "#comment") {
         $($idButton).click(function () {
             $idcommentSection = "#Section" + this.id
             if ($($idcommentSection).css('display') == 'none') {
@@ -21,7 +22,6 @@ $(document).ready(function () {
             }
             $($idcommentSection).toggle();
         });
-        
-    });
+    }
 });
 
