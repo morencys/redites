@@ -34,12 +34,6 @@ namespace WebApplication1.Controllers
                     PostText = reader.GetFieldValue<string>(2)
                 };
 
-                var topics = new dto.Topic()
-                {
-
-                };
-
-
                 ret.Add(t);
             }
             return ret;
@@ -102,10 +96,16 @@ namespace WebApplication1.Controllers
 
         }
 
+        public async Task<IActionResult> ActionAsync()
+        {
+            return View(await GetComments());
+        } 
+
         public async Task<IActionResult> IndexAsync()
         {
             return View(await GetPosts());
         }
+ 
         public IActionResult Privacy()
         {
             return View();
