@@ -34,12 +34,6 @@ namespace WebApplication1.Controllers
                     PostText = reader.GetFieldValue<string>(2)
                 };
 
-                var topics = new dto.Topic()
-                {
-
-                };
-
-
                 ret.Add(t);
             }
             return ret;
@@ -48,7 +42,7 @@ namespace WebApplication1.Controllers
 
         private async Task<List<dto.Topic>> GetTopics()
         {
-            var ret = new List<dto.Topic>();
+            var listTopics = new List<dto.Topic>();
             var cmd = this.MySqlDatabase.Connection.CreateCommand() as MySqlCommand;
 
             cmd.CommandText = @"SELECT topicName FROM tbltopic";
@@ -63,10 +57,10 @@ namespace WebApplication1.Controllers
                     };
 
 
-                    ret.Add(topics);
+                    listTopics.Add(topics);
                 }
 
-            return ret;
+            return listTopics;
         }
 
         private async Task<List<dto.Comment>> GetComments()
@@ -86,7 +80,6 @@ namespace WebApplication1.Controllers
                         CommentText = reader.GetFieldValue<string>(2)
                     };
 
-
                     ret.Add(t);
                 }
 
@@ -105,7 +98,10 @@ namespace WebApplication1.Controllers
         public async Task<IActionResult> IndexAsync()
         {
             return View(await GetPosts());
+            //return View(Tuple.Create(await GetPosts(), await GetTopics()));
         }
+
+
         public IActionResult Privacy()
         {
             return View();
