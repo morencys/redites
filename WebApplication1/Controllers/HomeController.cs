@@ -16,7 +16,7 @@ namespace WebApplication1.Controllers
     {
         private MySqlDatabase MySqlDatabase { get; set; }
   
-        private async Task<List<dto.Post>> GetPosts()
+        private async Task<List<dto.Post>> GetPosts() 
         {
             var ret = new List<dto.Post>();
 
@@ -36,9 +36,33 @@ namespace WebApplication1.Controllers
 
                     ret.Add(t);
                 }
+
             return ret;
         }
 
+        private async Task<List<dto.Comment>> GetComments()
+        {
+            var ret = new List<dto.Comment>();
+
+            var cmd = this.MySqlDatabase.Connection.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT CommentId, CommentUserId, CommentText FROM tblcomment";
+
+            using (var reader = await cmd.ExecuteReaderAsync())
+                while (await reader.ReadAsync())
+                {
+                    var t = new dto.Comment()
+                    {
+                        CommentId = reader.GetFieldValue<int>(0),
+                        CommentUserId = reader.GetFieldValue<int>(1),
+                        CommentText = reader.GetFieldValue<string>(2)
+                    };
+
+
+                    ret.Add(t);
+                }
+
+            return ret;
+        }
 
         private readonly ILogger<HomeController> _logger;
 
@@ -51,9 +75,8 @@ namespace WebApplication1.Controllers
 
         public async Task<IActionResult> IndexAsync()
         {
-            return View(await this.GetPosts());
+            return View(await GetPosts());
         }
-
         public IActionResult Privacy()
         {
             return View();
