@@ -7,9 +7,11 @@ namespace WebApplication1.Models
 {
     public class Post
     {
-            public int PostId { get; set; }
-            public string PostTitle { get; set; }
-            public string PostText{ get; set; }
+        public int PostId { get; set; }
+        public int PostUserId { get; set; }
+        public int PostTopicId { get; set; }
+        public string PostTitle { get; set; }
+        public string PostText{ get; set; }
         
     }
 }
