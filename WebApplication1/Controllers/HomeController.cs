@@ -22,19 +22,48 @@ namespace WebApplication1.Controllers
 
             var cmd = this.MySqlDatabase.Connection.CreateCommand() as MySqlCommand;
             cmd.CommandText = @"SELECT postId, postTitle, postText FROM tblpost";
+            
+
+            using (var reader = await cmd.ExecuteReaderAsync())
+            while (await reader.ReadAsync())
+            {
+                var t = new dto.Post()
+                {
+                    PostId = reader.GetFieldValue<int>(0),
+                    PostTitle = reader.GetFieldValue<string>(1),
+                    PostText = reader.GetFieldValue<string>(2)
+                };
+
+                var topics = new dto.Topic()
+                {
+
+                };
+
+
+                ret.Add(t);
+            }
+            return ret;
+        }
+
+
+        private async Task<List<dto.Topic>> GetTopics()
+        {
+            var ret = new List<dto.Topic>();
+            var cmd = this.MySqlDatabase.Connection.CreateCommand() as MySqlCommand;
+
+            cmd.CommandText = @"SELECT topicName FROM tbltopic";
 
             using (var reader = await cmd.ExecuteReaderAsync())
                 while (await reader.ReadAsync())
                 {
-                    var t = new dto.Post()
+                    var topics = new dto.Topic()
                     {
-                        PostId = reader.GetFieldValue<int>(0),
-                        PostTitle = reader.GetFieldValue<string>(1),
-                        PostText = reader.GetFieldValue<string>(2)
+                        TopicId = reader.GetFieldValue<int>(0),
+                        TopicName = reader.GetFieldValue<string>(1),
                     };
-                    
 
-                    ret.Add(t);
+
+                    ret.Add(topics);
                 }
             return ret;
         }
