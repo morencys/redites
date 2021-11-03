@@ -98,10 +98,7 @@ namespace WebApplication1.Controllers
         public async Task<IActionResult> IndexAsync()
         {
             return View(await GetPosts());
-            //return View(Tuple.Create(await GetPosts(), await GetTopics()));
         }
-
-
         public IActionResult Privacy()
         {
             return View();
