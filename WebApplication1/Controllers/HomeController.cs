@@ -15,8 +15,8 @@ namespace WebApplication1.Controllers
     public class HomeController : Controller
     {
         private MySqlDatabase MySqlDatabase { get; set; }
-  
-        private async Task<Site> GetSites() 
+
+        private async Task<Site> GetSites()
         {
             var ret = new List<dto.Post>();
             var comments = new List<dto.Comment>();
@@ -24,11 +24,11 @@ namespace WebApplication1.Controllers
 
             var cmd = this.MySqlDatabase.Connection.CreateCommand() as MySqlCommand;
             cmd.CommandText = @"SELECT postId, postTitle, postText FROM tblpost";
-            
+
 
             using (var reader = await cmd.ExecuteReaderAsync())
-            while (await reader.ReadAsync())
-            {
+                while (await reader.ReadAsync())
+                {
                     var t = new dto.Post()
                     {
                         PostId = reader.GetFieldValue<int>(0),
@@ -36,8 +36,8 @@ namespace WebApplication1.Controllers
                         PostText = reader.GetFieldValue<string>(2)
                     };
 
-                ret.Add(t);
-            }
+                    ret.Add(t);
+                }
             cmd.CommandText = @"SELECT CommentId, CommentUserId, CommentPostId, CommentText FROM tblcomment";
 
             using (var reader = await cmd.ExecuteReaderAsync())
@@ -79,52 +79,20 @@ namespace WebApplication1.Controllers
             return site;
         }
 
-
-        /*private async Task<List<dto.Topic>> GetTopics()
+        [HttpPost]
+        private void Button_Click(String topic, String title, String text)
         {
-            var listTopics = new List<dto.Topic>();
-            var cmd = this.MySqlDatabase.Connection.CreateCommand() as MySqlCommand;
-
-            cmd.CommandText = @"SELECT topicName FROM tbltopic";
-
-            using (var reader = await cmd.ExecuteReaderAsync())
-                while (await reader.ReadAsync())
-                {
-                    var topics = new dto.Topic()
-                    {
-                        TopicId = reader.GetFieldValue<int>(0),
-                        TopicName = reader.GetFieldValue<string>(1),
-                    };
-
-
-                    listTopics.Add(topics);
-                }
-
-            return listTopics;
-        }*/
-
-       /* private async Task<List<dto.Comment>> GetComments()
-        {
-            var ret = new List<dto.Comment>();
 
             var cmd = this.MySqlDatabase.Connection.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"SELECT CommentId, CommentUserId, CommentText FROM tblcomment";
+            cmd.CommandText = @"INSERT INTO tblpost(postTitle,postText) VALUES (@title,@text;";
+            cmd.Parameters.AddWithValue("@Text", title);
+            cmd.Parameters.AddWithValue("@text", text);
 
-            using (var reader = await cmd.ExecuteReaderAsync())
-                while (await reader.ReadAsync())
-                {
-                    var t = new dto.Comment()
-                    {
-                        CommentId = reader.GetFieldValue<int>(0),
-                        CommentUserId = reader.GetFieldValue<int>(1),
-                        CommentText = reader.GetFieldValue<string>(2)
-                    };
+            var recs = cmd.ExecuteNonQuery();
 
-                    ret.Add(t);
-                }
-
-            return ret;
+            View(GetSites());
         }
+
         private async Task<List<dto.user>> GetUsers()
         {
             var ret = new List<dto.user>();
@@ -155,7 +123,6 @@ namespace WebApplication1.Controllers
         {
             _logger = logger;
             this.MySqlDatabase = mySqlDatabase;
-
         }
 
 
