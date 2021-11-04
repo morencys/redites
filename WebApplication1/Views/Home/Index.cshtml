@@ -87,70 +87,61 @@
 </div>
 
 <!-- Need to add list of all post -->
-<div class="container p-0 pt-5">
+@foreach (var t in Model.post)
+{
     <div class="container p-0 pt-5">
-        <div class="row p-3 py-0 border border-3 border-dark rounded">
-            <div class="row my-3">
-                <div class="col-6">
-                    <h1></h1>
+        <div class="container p-0 pt-5">
+            <div class="row p-3 py-0 border border-3 border-dark rounded">
+                <div class="row my-3">
+                    <div class="col-6">
+                        <h2>@t.PostTitle</h2>
+                    </div>
+                    <div class="col-6">
+                        <h4>Temp Topic</h4>
+                    </div>
                 </div>
-                <div class="col-6">
-                    <h1></h1>
+                <div class="row my-3">
+                    <p>@t.PostText</p>
                 </div>
             </div>
-            <div class="row my-3">
-                <p></p>
-            </div>
-        </div>
-        <div class="d-grid mt-3 d-flex justify-content-md-end">
-            <div class="mx-4">
-                <button class="btn btn-primary btn-dark btn-lg" type="button">See comments</button>
-            </div>
-            <button class="btn btn-primary btn-dark btn-lg" type="button">Create comment</button>
         </div>
     </div>
-</div>
-
-
-
-<!-- test of bd connection -->
-
-<div class="row">
-    <!-- List of Tasks -->
-    <h2>Tasks</h2>
-    <table>
-        <tr class="header">
-            <td class="empty"></td>
-            <td class="empty"></td>
-            <td>Description</td>
-        </tr>
-        @if (Model != null)
+    <!-- See Comment Section -->
+    @foreach (var i in Model.comment)
+    {
+        @if (i.CommentPostId == t.PostId)
         {
-            var added = false;
-            foreach (var t in Model)
-            {
-                <tr id="tr_@t.PostId">
-                    <td><i class="fas fa-archive" onclick="Click(@t.PostId,'Archive')"></i></td>
-                    <td id="td_incomplete_@t.PostId">
-                        <i class="far fa-square" onclick="Click(@t.PostId,'Complete')"></i>
-                    </td>
-                    <td id="td_complete_@t.PostId">
-                        <i class="far fa-check-square" onclick="Click(@t.PostId,'Incomplete')"></i>
-                    </td>
-                    <td>@t.PostTitle</td>
-                </tr>
-
-                added = true;
-            }
-            if (!added)
-            {
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td style="display:none;"></td>
-                    <td>No tasks found.</td>
-                </tr>
-            }
+            <div class="container p-0" id="@("Sectioncomment" + @t.PostId)" style="display:none">
+                <div class="container p-0">
+                    <div class="row p-3 py-0 border border-3 border-dark rounded">
+                        <div class="col-3">
+                            <p>@i.CommentText</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         }
-    </table>
-</div>
+    }
+    <div class="d-grid mt-3 d-flex justify-content-md-end">
+        <div class="mx-4">
+            <button class="btn btn-primary btn-dark btn-lg" type="button" id="@("comment"+@t.PostId)">See comments</button>
+        </div>
+        <button class="btn btn-primary btn-dark btn-lg" type="button">Create comment</button>
+    </div>
+    <!-- Add Comment -->
+    <div class="container p-0" style="display:none">
+        <form action="ajoutCommentaire" method="post">
+            <div class="container p-0">
+                <div class="row p-3 py-0 border border-3 border-dark rounded">
+                    <div class="col-3">
+
+                    </div>
+                    <div class="col-9">
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+}
+
