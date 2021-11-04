@@ -89,7 +89,7 @@ namespace WebApplication1.Controllers
             cmd.Parameters.AddWithValue("@Text", title);
             cmd.Parameters.AddWithValue("@text", text);
 
-            var recs = cmd.ExecuteNonQuery();
+            cmd.ExecuteNonQuery();
 
             View(GetSites());
         }
