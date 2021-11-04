@@ -16,9 +16,11 @@ namespace WebApplication1.Controllers
     {
         private MySqlDatabase MySqlDatabase { get; set; }
   
-        private async Task<List<dto.Post>> GetPosts() 
+        private async Task<Site> GetSites() 
         {
             var ret = new List<dto.Post>();
+            var comments = new List<dto.Comment>();
+            var listTopics = new List<dto.Topic>();
 
             var cmd = this.MySqlDatabase.Connection.CreateCommand() as MySqlCommand;
             cmd.CommandText = @"SELECT postId, postTitle, postText FROM tblpost";
@@ -27,20 +29,58 @@ namespace WebApplication1.Controllers
             using (var reader = await cmd.ExecuteReaderAsync())
             while (await reader.ReadAsync())
             {
-                var t = new dto.Post()
-                {
-                    PostId = reader.GetFieldValue<int>(0),
-                    PostTitle = reader.GetFieldValue<string>(1),
-                    PostText = reader.GetFieldValue<string>(2)
-                };
+                    var t = new dto.Post()
+                    {
+                        PostId = reader.GetFieldValue<int>(0),
+                        PostTitle = reader.GetFieldValue<string>(1),
+                        PostText = reader.GetFieldValue<string>(2)
+                    };
 
                 ret.Add(t);
             }
-            return ret;
+            cmd.CommandText = @"SELECT CommentId, CommentUserId, CommentPostId, CommentText FROM tblcomment";
+
+            using (var reader = await cmd.ExecuteReaderAsync())
+                while (await reader.ReadAsync())
+                {
+                    var t = new dto.Comment()
+                    {
+                        CommentId = reader.GetFieldValue<int>(0),
+                        CommentUserId = reader.GetFieldValue<int>(1),
+                        CommentPostId = reader.GetFieldValue<int>(2),
+                        CommentText = reader.GetFieldValue<string>(3)
+                    };
+
+                    comments.Add(t);
+                }
+            cmd.CommandText = @"SELECT topicId, topicName FROM tbltopic";
+
+            using (var reader = await cmd.ExecuteReaderAsync())
+                while (await reader.ReadAsync())
+                {
+                    var topics = new dto.Topic()
+                    {
+                        TopicId = reader.GetFieldValue<int>(0),
+                        TopicName = reader.GetFieldValue<string>(1),
+                    };
+
+
+                    listTopics.Add(topics);
+                }
+
+            Site site = new Site()
+            {
+                post = ret,
+                comment = comments,
+                topic = listTopics
+
+            };
+
+            return site;
         }
 
 
-        private async Task<List<dto.Topic>> GetTopics()
+        /*private async Task<List<dto.Topic>> GetTopics()
         {
             var listTopics = new List<dto.Topic>();
             var cmd = this.MySqlDatabase.Connection.CreateCommand() as MySqlCommand;
@@ -61,9 +101,9 @@ namespace WebApplication1.Controllers
                 }
 
             return listTopics;
-        }
+        }*/
 
-        private async Task<List<dto.Comment>> GetComments()
+       /* private async Task<List<dto.Comment>> GetComments()
         {
             var ret = new List<dto.Comment>();
 
@@ -84,7 +124,7 @@ namespace WebApplication1.Controllers
                 }
 
             return ret;
-        }
+        }*/
 
         private readonly ILogger<HomeController> _logger;
 
@@ -95,9 +135,10 @@ namespace WebApplication1.Controllers
 
         }
 
+
         public async Task<IActionResult> IndexAsync()
         {
-            return View(await GetPosts());
+            return View(await GetSites());
         }
         public IActionResult Privacy()
         {
