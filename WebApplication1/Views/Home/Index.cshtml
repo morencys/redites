@@ -17,6 +17,7 @@
 </script>
 <title>Front page of the internet</title>
 
+
 <!-- Black banner with title -->
 <div class="container-fluid">
     <div class="row text-center border border-dark" style="background-color:#000000;">
@@ -32,7 +33,10 @@
         <div class="col">
             <label for="topic">Topic: </label>
             <select class="topic" name="topic">
-                <option value="">temp</option>
+                @foreach (var r in Model.topic)
+                {
+                    <option value="@r.TopicId">@r.TopicName</option>
+                }
             </select>
         </div>
         <div class="col text-center">
@@ -55,7 +59,10 @@
                     </div>
                     <div class="col-9">
                         <select class="topic" name="topic">
-                            <option value="">temp</option>
+                            @foreach (var r in Model.topic)
+                            {
+                                <option value="@r.TopicId">@r.TopicName</option>
+                            }
                         </select>
                     </div>
                 </div>
@@ -97,7 +104,13 @@
                         <h2>@t.PostTitle</h2>
                     </div>
                     <div class="col-6">
-                        <h4>Temp Topic</h4>
+                        @foreach (var r in Model.topic)
+                        {
+                            @if (r.TopicId == t.PostTopicId)
+                            {
+                                <h4>@r.TopicName</h4>
+                            }
+                        }
                     </div>
                 </div>
                 <div class="row my-3">
@@ -126,22 +139,30 @@
         <div class="mx-4">
             <button class="btn btn-primary btn-dark btn-lg" type="button" id="@("comment"+@t.PostId)">See comments</button>
         </div>
-        <button class="btn btn-primary btn-dark btn-lg" type="button">Create comment</button>
+        <button class="btn btn-primary btn-dark btn-lg" type="button" id="@("createComment"+@t.PostId)">Create comment</button>
     </div>
     <!-- Add Comment -->
-    <div class="container p-0" style="display:none">
-        <form action="ajoutCommentaire" method="post">
+    <div class="container p-2" style="display:none" id="@("SectioncreateComment"+@t.PostId)">
+        <form action="addComment" method="post">
             <div class="container p-0">
                 <div class="row p-3 py-0 border border-3 border-dark rounded">
-                    <div class="col-3">
-
+                    <div class="col-1 p-3">
+                        <label for="text">Username:</label>
                     </div>
-                    <div class="col-9">
-
+                    <div class="col-2 p-3">
+                        <input id="Username" type="text" pattern="^.{1,100}$" title="Vous avez trop de caractères (Maximum 100)">
                     </div>
+                    <div class="col-1 p-3">
+                        <label for="text">Post:</label>
+                    </div>
+                    <div class="col-8 p-3">
+                        <textarea id="postTextArea" name="text" rows="3" cols="80" pattern="^.{1,255}$" title="Vous avez trop de caractères (Maximum 255)"></textarea>
+                    </div>
+                </div>
+                <div class="d-grid mt-3 d-flex justify-content-md-end">
+                    <button class="btn btn-primary btn-dark btn-lg" type="submit">Create Comment</button>
                 </div>
             </div>
         </form>
     </div>
 }
-

@@ -23,7 +23,7 @@ namespace WebApplication1.Controllers
             var listTopics = new List<dto.Topic>();
 
             var cmd = this.MySqlDatabase.Connection.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"SELECT postId, postTitle, postText FROM tblpost";
+            cmd.CommandText = @"SELECT postId, postTitle, postText, PostTopicId FROM tblpost";
             
 
             using (var reader = await cmd.ExecuteReaderAsync())
@@ -33,7 +33,8 @@ namespace WebApplication1.Controllers
                     {
                         PostId = reader.GetFieldValue<int>(0),
                         PostTitle = reader.GetFieldValue<string>(1),
-                        PostText = reader.GetFieldValue<string>(2)
+                        PostText = reader.GetFieldValue<string>(2),
+                        PostTopicId = reader.GetFieldValue<int>(3),
                     };
 
                 ret.Add(t);
