@@ -11,8 +11,9 @@ $("#AjouterPost").click(function () {
 
 $("button").click(function () {
     $idButton = "#" + this.id;
-    $test = $idButton.replace(/\d+/g, '')
-    if ($test === "#comment") {
+    $verification = $idButton.replace(/\d+/g, '')
+    //Button See comment
+    if ($verification === "#comment") {
         $($idButton).click(function () {
             $idcommentSection = "#Section" + this.id
             if ($($idcommentSection).css('display') == 'none') {
@@ -23,5 +24,18 @@ $("button").click(function () {
             $($idcommentSection).toggle();
         });
     }
-});
+
+    //Button Create comment
+    if ($verification === "#createComment") {
+        $($idButton).click(function () {
+            $idcommentSection = "#Section" + this.id
+            if ($($idcommentSection).css('display') == 'none') {
+                $($idButton).html('Cancel comment');
+            } else {
+                $($idButton).html('Create comment');
+            }
+            $($idcommentSection).toggle();
+        });
+    }
+}); 
 
