@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<hr />
+<center>
+    <table border="1">
+        <tr>
+            <td>Login</td>
+            <td><input id="loginInput" type="text" name="login" size="30" /></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td> <input id="pswInput" type="text" name="psw" size="30" /> </td>
+        </tr>
+    </table>
+    <button id="log" class="btn btn-primary btn-dark btn-lg" onclick="verify()" style="width:150px; margin-top:10px; ">Login</button>
+    <script type="text/javascript">
+        $("#log").click(function () {
+            var name = document.getElementById('loginInput').value;
+            var psw = document.getElementById('pswInput').value;
+            var ok = false;
+            $("tr").find("td:first-child")
+            
+        });
+
+        function verify(){
+            
+        }    
+    </script>
+
+
+</center>
+    <table border="1">
+        @if (Model != null)
+        {           
+            foreach (var t in Model)
+            {
+                <tr id=@t.userId >                           
+                 <td>@t.userName</td>
+                 <td>@t.userPsw</td>
+                </tr>
+            }    
+        }
+        </table>

@@ -125,8 +125,31 @@ namespace WebApplication1.Controllers
                 }
 
             return ret;
-        }*/
+        }
+        private async Task<List<dto.user>> GetUsers()
+        {
+            var ret = new List<dto.user>();
 
+            var cmd = this.MySqlDatabase.Connection.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT userId, userName, userPsw FROM tbluser";
+
+
+            using (var reader = await cmd.ExecuteReaderAsync())
+                while (await reader.ReadAsync())
+                {
+                    var t = new dto.user()
+                    {
+                        userId = reader.GetFieldValue<int>(0),
+                        userName = reader.GetFieldValue<string>(1),
+                        userPsw = reader.GetFieldValue<string>(2)
+                    };
+
+
+
+                    ret.Add(t);
+                }
+            return ret;
+        }
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger, MySqlDatabase mySqlDatabase)
@@ -144,6 +167,11 @@ namespace WebApplication1.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public async Task<IActionResult> Login()
+        {
+            return View(await GetUsers());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
