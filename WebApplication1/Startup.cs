@@ -24,7 +24,6 @@ namespace WebApplication1
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddTransient<MySqlDatabase>(_ => new MySqlDatabase("server=localhost; database=redites; uid=root; pwd=;"));
 
         }
 
