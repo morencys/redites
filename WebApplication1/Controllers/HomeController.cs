@@ -15,9 +15,10 @@ namespace WebApplication1.Controllers
     public class HomeController : Controller
     {
         private MySqlDatabase MySqlDatabase { get; set; }
-
+        
         private async Task<Site> GetSites()
         {
+            
             var ret = new List<dto.Post>();
             var comments = new List<dto.Comment>();
             var listTopics = new List<dto.Topic>();
@@ -126,11 +127,13 @@ namespace WebApplication1.Controllers
             this.MySqlDatabase = mySqlDatabase;
         }
 
-
+        
         public async Task<IActionResult> IndexAsync()
         {
-            return View(await GetSites());
+            //return View(await GetSites());
+            return View();
         }
+        
         public IActionResult Privacy()
         {
             return View();
