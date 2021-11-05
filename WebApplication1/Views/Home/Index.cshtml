@@ -57,12 +57,7 @@
                     </div>
                     <div class="col-9">
                         <select class="topic" name="topic">
-
-                            <!-- foreach (var r in Model.topic)
-                        {-->
-
                             <option value=" salut">salut</option>
-                            <!--  }-->
                         </select>
                     </div>
                 </div>
@@ -112,17 +107,11 @@
         </div>
     </div>
 </div>
-<!-- See Comment Section -->
-<!-- @foreach (var i in Model.comment)
-{ -->
-<!--@if (i.CommentPostId == t.PostId)
-{ -->
-<div class="container p-0" id="<!--@(" Sectioncomment" + @t.PostId)" style="display:none">
+<div class="container p-0" style="display:none">
     <div class="container p-0">
         <div class="row p-3 py-0 border border-3 border-dark rounded">
             <div class="col-3">
                 <p>
-                    <!--@i.CommentText  -->
                 </p>
             </div>
         </div>
