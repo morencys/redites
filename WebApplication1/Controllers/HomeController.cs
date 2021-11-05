@@ -34,11 +34,6 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Login()
-        {
-            return View(await GetUsers());
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
