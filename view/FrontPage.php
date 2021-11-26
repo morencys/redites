@@ -85,7 +85,6 @@
                 <button class="btn btn-primary btn-dark btn-lg" name="Button_Click" type="submit" style="width:150px;">Create post</button>
             </div>
         </div>
-    }
 </div>
 <!-- Need to add list of all post -->
     <div class="container p-0 pt-5">
