@@ -36,10 +36,9 @@
         <div class="col">
             <label for="topic">Topic: </label>
             <select class="topic" name="topic">
-                @foreach (var r in Model.topic)
-                {
-                    <option value="@r.TopicId">@r.TopicName</option>
-                }
+                <? foreach($a as $b) { ?>
+                    <option value="TopicId">TopicName</option>
+                <? } ?>
             </select>
         </div>
         <div class="col text-center">
@@ -54,8 +53,8 @@
 <!-- Form to add post -->
 
 <div class="container p-0 pt-5" id="addingPost" style="display:none">
-    @using (Html.BeginForm("index", "Home"))
-    {
+    <? foreach($a as $b) { ?>
+    
         <div class="container p-0 pt-5">
             <div class="row p-3 py-0 border border-3 border-dark rounded">
                 <div class="row my-3">
@@ -64,10 +63,9 @@
                     </div>
                     <div class="col-9">
                         <select class="topic" name="topic">
-                            @foreach (var r in Model.topic)
-                            {
-                                <option value="@r.TopicId">@r.TopicName</option>
-                            }
+                            <? foreach($a as $b) { ?>
+                                <option value="TopicId">TopicName</option>
+                            <? } ?>
                         </select>
                     </div>
                 </div>
@@ -95,11 +93,10 @@
                 <button class="btn btn-primary btn-dark btn-lg" name="Button_Click" type="submit" style="width:150px;">Create post</button>
             </div>
         </div>
-    }
+    <? } ?>
 </div>
 <!-- Need to add list of all post -->
-@foreach (var t in Model.post)
-{
+<? foreach($a as $b) { ?>
     <div class="container p-0 pt-5">
         <div class="container p-0 pt-5">
             <div class="row p-3 py-0 border border-3 border-dark rounded">
@@ -108,45 +105,42 @@
                         <h2>@t.PostTitle</h2>
                     </div>
                     <div class="col-6">
-                        @foreach (var r in Model.topic)
-                        {
-                            @if (r.TopicId == t.PostTopicId)
-                            {
-                                <h4>@r.TopicName</h4>
-                            }
-                        }
+                        <? foreach($a as $b) { ?>
+                            <? if (TopicId == PostTopicId) { ?>
+                                <h4>TopicName</h4>
+                            <? } ?>
+                        <? } ?>
                     </div>
                 </div>
                 <div class="row my-3">
-                    <p>@t.PostText</p>
+                    <p>PostText</p>
                 </div>
             </div>
         </div>
     </div>
     <!-- See Comment Section -->
-    @foreach (var i in Model.comment)
-    {
-        @if (i.CommentPostId == t.PostId)
-        {
-            <div class="container p-0" id="@("Sectioncomment" + @t.PostId)" style="display:none">
+    <? foreach($a as $b) { ?>
+        <? if (CommentPostId == PostId) { ?>
+            <div class="container p-0" id="Sectioncomment + PostId)" style="display:none">
                 <div class="container p-0">
                     <div class="row p-3 py-0 border border-3 border-dark rounded">
                         <div class="col-3">
-                            <p>@i.CommentText</p>
+                            <p>CommentText</p>
                         </div>
                     </div>
                 </div>
             </div>
-        }
-    }
+        <? } ?>
+    <? } ?>
     <div class="d-grid mt-3 d-flex justify-content-md-end">
         <div class="mx-4">
-            <button class="btn btn-primary btn-dark btn-lg" type="button" id="@("comment" + @t.PostId)">See comments</button>
+            <button class="btn btn-primary btn-dark btn-lg" type="button" id="comment + PostId)">See comments</button>
         </div>
-        <button class="btn btn-primary btn-dark btn-lg" type="button" id="@("createComment"+@t.PostId)">Create comment</button>
+        <button class="btn btn-primary btn-dark btn-lg" type="button" id="createComment + PostId)">Create comment</button>
     </div>
+
     <!-- Add Comment -->
-    <div class="container p-2" style="display:none" id="@("SectioncreateComment"+@t.PostId)">
+    <div class="container p-2" style="display:none" id="SectioncreateComment + PostId)">
         <form action="addComment" method="post">
             <div class="container p-0">
                 <div class="row p-3 py-0 border border-3 border-dark rounded">
@@ -169,6 +163,6 @@
             </div>
         </form>
     </div>
-}
+    <? } ?>
 </body>
 </html>
