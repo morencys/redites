@@ -51,6 +51,7 @@
     <!-- Form to add post -->
 
     <div class="container p-0 pt-5" id="addingPost" style="display:none">
+    <form action="addPost" method="post">
         <div class="container p-0 pt-5">
             <div class="row p-3 py-0 border border-3 border-dark rounded">
                 <div class="row my-3">
@@ -87,6 +88,7 @@
                 <button class="btn btn-primary btn-dark btn-lg" name="Button_Click" type="submit" style="width:150px;">Create post</button>
             </div>
         </div>
+        </form>
     </div>
     <!-- Need to add list of all post -->
     <div class="container p-0 pt-5">
