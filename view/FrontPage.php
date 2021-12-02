@@ -152,6 +152,7 @@
 </body>
 
 <?php require_once '../controller/HomeController.php';
+    echo "test";
     $topic = new showFrontpage();
     $topic->showFrontpage();
 ?>
