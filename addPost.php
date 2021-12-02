@@ -5,7 +5,6 @@
         <button class="btn btn-primary btn-dark btn-lg" type="button"onClick="document.location.href='/'" >Front Page of the internet</button>
         <?php
         $title = $_POST["title"];
-        $topic = $_POST["topic"];
         $postTextArea = $_POST["postTextArea"];
         $post = new showFrontpage(); 
         $post->addPost();?>
