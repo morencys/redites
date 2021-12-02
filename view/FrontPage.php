@@ -36,10 +36,6 @@
             <div class="col">
                 <label for="topic">Topic: </label>
                 <select class="topic" name="topic">
-                    <?php require_once 'controller/HomeController.php';
-                    $topic = new showFrontpage();
-                    $topic->showFrontpage();
-                    ?>
                     <option value="@r.TopicId"></option>
                 </select>
             </div>
@@ -154,5 +150,10 @@
         </form>
     </div>
 </body>
+
+<?php require_once 'controller/HomeController.php';
+                    $topic = new showFrontpage();
+                    $topic->showFrontpage();
+                    ?>
 
 </html>
