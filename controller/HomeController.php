@@ -17,13 +17,13 @@ class showFrontpage{
         }
         echo 'Connected successfully';
         echo "test3";
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "test4";
+       
         $topic = $conn->query("SELECT * FROM tbltopic");
         
         while($topicInfo = $topic->fetch()){
             echo $topicInfo['topicName'];
         }
+        echo "test4";
     }
 
     public function addPost(){
