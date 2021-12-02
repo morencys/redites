@@ -10,20 +10,18 @@ class showFrontpage{
         $bdName = "redites";
 
         echo "test";
-        $conn = new mysqli($servername, $username, $password, $bdName);
+        $bdd = new PDO("mysql:host=$servername;dbname=$bdName;charset=utf8", $username, $password);
         echo "test2";
-        if (!$conn) {
-            die('Could not connect: ' . mysql_error());
-        }
-        echo 'Connected successfully';
+        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        echo "test3";
         
         $topic = $conn->query("SELECT * FROM tbltopic");
-        dd($topic);
+        echo "test4";
 
         while($topicInfo = $topic->fetch()){
             echo $topicInfo['topicName'];
         }
-        echo "test4";
+        echo "test5";
     }
 
     public function addPost(){
