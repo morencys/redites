@@ -9,11 +9,20 @@ class showFrontpage{
         $password = "Bingo123!";
         $bdName = "redites";
 
-        echo "test";
-        $bdd = new PDO("mysql:host=$servername;dbname=$bdName;charset=utf8", $username, $password);
+        $conn = mysqli_connect($servername, $username, $password, $bdName);
         echo "test2";
-        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        if (!$conn) {
+            die('Could not connect: ' . mysql_error());
+        }
+        echo 'Connected successfully';
         echo "test3";
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        echo "test4";
+        $topic = $conn->query("SELECT * FROM tbltopic");
+        
+        while($topicInfo = $topic->fetch()){
+            echo $topicInfo['topicName'];
+        }
     }
 
     public function addPost(){
