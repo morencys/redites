@@ -1,6 +1,7 @@
 <?php
 class showFrontpage{
     public function showFrontPage(){
+        echo "test3";
         $servername = "192.168.10.15";
         $username = "redites";
         $password = "Bingo123!";
