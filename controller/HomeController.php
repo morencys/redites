@@ -4,7 +4,7 @@ use PDO;
 
 class showFrontpage{
     public function showFrontPage(){
-        $servername = "192.168.10.15";
+        $servername = "192.168.10.15:3306";
         $username = "redites@localhost";
         $password = "Bingo123!";
         $bdName = "redites";
