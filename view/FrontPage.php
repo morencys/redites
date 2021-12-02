@@ -151,9 +151,9 @@
     </div>
 </body>
 
-<?php require_once 'controller/HomeController.php';
-                    $topic = new showFrontpage();
-                    $topic->showFrontpage();
-                    ?>
+<?php require_once '../controller/HomeController.php';
+    $topic = new showFrontpage();
+    $topic->showFrontpage();
+?>
 
 </html>
