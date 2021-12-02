@@ -7,7 +7,7 @@ class showFrontpage{
         $servername = "192.168.10.15";
         $username = "redites";
         $password = "Bingo123!";
-        $bdName = "redites";
+        $bdName = "tester";
 
         echo "test";
 
