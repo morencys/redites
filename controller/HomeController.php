@@ -9,7 +9,8 @@ class showFrontpage{
         $password = "Bingo123!";
         $bdName = "redites";
 
-        $conn = mysqli_connect($servername, $username, $password, $bdName);
+        echo "test";
+        $conn = new mysqli($servername, $username, $password, $bdName);
         echo "test2";
         if (!$conn) {
             die('Could not connect: ' . mysql_error());
