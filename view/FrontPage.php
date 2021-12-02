@@ -34,10 +34,8 @@
     <div class="container p-0 pt-3">
         <div class="row align-items-center mt-4">
             <div class="col">
-            <?php require '../controller/HomeController.php';
-                $topic = new showFrontpage();
-                $topic->showTopic();
-            ?>
+            <label for='topic'>Topic: </label>
+            <?php require '../controller/HomeController.php'; $topic = new showFrontpage(); $topic->showTopic();?>
             </div>
             <div class="col text-center">
                 <button id="FilterTopic" class="btn btn-primary btn-dark btn-lg" style="width:150px;">Filter</button>
@@ -59,9 +57,7 @@
                         <label for="topic">Topic: </label>
                     </div>
                     <div class="col-9">
-                        <select class="topic" name="topic">
-                            <option value="@r.TopicId"></option>
-                        </select>
+                        <?php require '../controller/HomeController.php'; $topic = new showFrontpage(); $topic->showTopic();?>
                     </div>
                 </div>
                 <div class="row my-3">

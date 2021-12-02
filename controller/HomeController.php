@@ -14,8 +14,7 @@ class showFrontpage{
         
         $topic = $conn->query("SELECT * FROM tbltopic");
 
-        echo "<label for='topic'>Topic: </label>
-            <select class='topic' name='topic'>";
+        echo "<select class='topic' name='topic'>";
         while($topicInfo = $topic->fetch()){
             echo "<option value='" . $topicInfo['topicId'] . "'>" . $topicInfo['topicName'] . "</option>";
         }
