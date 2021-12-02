@@ -68,7 +68,7 @@
                         <label for="title">Title: </label>
                     </div>
                     <div class="col-9">
-                        <input id="titleInput" type="text" name="title" size="60" pattern="^.{1,100}$" title="Vous avez trop de caractères (Maximum 100)">
+                        <input id="title" type="text" name="title" size="60" pattern="^.{1,100}$" title="Vous avez trop de caractères (Maximum 100)">
                     </div>
                 </div>
                 <div class="row my-3">
@@ -76,7 +76,7 @@
                         <label for="text">Post:</label>
                     </div>
                     <div class="col-9">
-                        <textarea id="postTextArea" name="text" rows="6" cols="120" pattern="^.{1,255}$" title="Vous avez trop de caractères (Maximum 255)"></textarea>
+                        <textarea id="postTextArea" name="postTextArea" rows="6" cols="120" pattern="^.{1,255}$" title="Vous avez trop de caractères (Maximum 255)"></textarea>
                     </div>
                 </div>
             </div>
@@ -101,12 +101,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="d-grid mt-3 d-flex justify-content-md-end">
-        <div class="mx-4">
-            <button class="btn btn-primary btn-dark btn-lg" type="button" id="">See comments</button>
-        </div>
-        <button class="btn btn-primary btn-dark btn-lg" type="button" id="">Create comment</button>
     </div>
 
     <!-- Add Comment -->
