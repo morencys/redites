@@ -3,14 +3,15 @@ class showFrontpage{
     public function showFrontPage(){
         $servername = "192.168.10.15";
         $username = "redites";
-        $password = "";
+        $password = "Bingo123!";
         $bdName = "redites";
         echo "test3";
         $conn = new PDO("mysql:host=$servername;dbname=$bdName;charset=utf8", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         echo "test4";
-        $topic = $conn->query("SELECT * FROM tbltopic");
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         echo "test5";
+        $topic = $conn->query("SELECT * FROM tbltopic");
+        
         while($topicInfo = $topic->fetch()){
             echo $topicInfo['topicName'];
         }
