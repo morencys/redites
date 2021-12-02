@@ -10,18 +10,21 @@ class showFrontpage{
         $bdName = "tester";
 
         echo "test";
-
-        $connect = mysql_connect($servername, $username, $password);
+        $conn = mysqli_connect($servername, $username, $password, $bdName);
         echo "test2";
-        mysql_select_db($bdName) or die("Could not open the database '$bdName'");
-        echo "test3";
-        $result = mysql_query("SELECT * FROM tbltopic");
-        echo "test4";
-
-        while ($row = mysql_fetch_array($result, MYSQL_NUM)){
-            printf("topic: %s", $row[0]);
+        if (!$conn) {
+            die('Could not connect: ' . mysql_error());
         }
-        echo "test5";
+        echo 'Connected successfully';
+        echo "test3";
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        echo "test4";
+        $topic = $conn->query("SELECT * FROM tbltopic");
+        
+        while($topicInfo = $topic->fetch()){
+            echo $topicInfo['topicName'];
+        }
+
     }
 
     public function addPost(){
