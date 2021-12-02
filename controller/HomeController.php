@@ -4,14 +4,14 @@ use PDO;
 
 class showFrontpage{
     public function showFrontPage(){
-        $servername = "192.168.10.15:3306";
-        $username = "root";
-        $password = "";
+        $servername = "192.168.10.15";
+        $username = "redites";
+        $password = "Bingo123!";
         $bdName = "redites";
 
         echo "test";
 
-        $connect = mysql_connect($servername, $username, $password) or die("Unable to connect to '$servername'");
+        $connect = mysql_connect($servername, $username, $password);
         echo "test2";
         mysql_select_db($bdName) or die("Could not open the database '$bdName'");
         echo "test3";
