@@ -4,4 +4,5 @@ p q r s | (p v !q)
 f f f f
 f f f v
 f f v f
-non VA CHIER MATHÉMATIQUE
+f f v v
+f v f f
