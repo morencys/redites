@@ -35,7 +35,9 @@
         <div class="row align-items-center mt-4">
             <div class="col">
             <label for='topic'>Topic: </label>
-            <?php require '../controller/HomeController.php'; $topic = new showFrontpage(); $topic->showTopic();?>
+            <?php require '../controller/HomeController.php'; 
+            $topic = new showFrontpage(); 
+            $topic->showTopic();?>
             </div>
             <div class="col text-center">
                 <button id="FilterTopic" class="btn btn-primary btn-dark btn-lg" style="width:150px;">Filter</button>
@@ -57,7 +59,8 @@
                         <label for="topic">Topic: </label>
                     </div>
                     <div class="col-9">
-                        <?php require '../controller/HomeController.php'; $topic = new showFrontpage(); $topic->showTopic();?>
+                        <?php $topic = new showFrontpage(); 
+                        $topic->showTopic();?>
                     </div>
                 </div>
                 <div class="row my-3">
