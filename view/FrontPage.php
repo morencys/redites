@@ -89,24 +89,9 @@
         </div>
         </form>
     </div>
-    <!-- Need to add list of all post -->
-    <div class="container p-0 pt-5">
-        <div class="container p-0 pt-5">
-            <div class="row p-3 py-0 border border-3 border-dark rounded">
-                <div class="row my-3">
-                    <div class="col-6">
-                        <h2></h2>
-                    </div>
-                    <div class="col-6">
-                        <h4></h4>
-                    </div>
-                </div>
-                <div class="row my-3">
-                    <p></p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- List of all post -->
+    <?php $post = new showFrontpage(); 
+    $post->showPosts();?>
     <!-- See Comment Section -->
     <div class="container p-0" id="" style="display:none">
         <div class="container p-0">
@@ -149,10 +134,5 @@
         </form>
     </div>
 </body>
-
-<?php require '../controller/HomeController.php';
-    $topic = new showFrontpage();
-    $topic->showFrontPage();
-?>
 
 </html>
