@@ -17,7 +17,7 @@ class showFrontpage{
         echo "<label for='topic'>Topic: </label>
             <select class='topic' name='topic'>";
         while($topicInfo = $topic->fetch()){
-            echo "<option value='" . $topicInfo['topicName'] . "'></option>";
+            echo "<option value='" . $topicInfo['topicId'] . "'>" . $topicInfo['topicName'] . "</option>";
         }
         echo"</select>";
     }
