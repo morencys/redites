@@ -3,7 +3,7 @@ class showFrontpage{
     public function showFrontPage(){
         $servername = "192.168.10.15";
         $username = "redites";
-        $password = "Bingo123!";
+        $password = "";
         $bdName = "redites";
         echo "test3";
         $conn = new PDO("mysql:host=$servername;dbname=$bdName;charset=utf8", $username, $password);
