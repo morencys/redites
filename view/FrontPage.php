@@ -151,10 +151,10 @@
     </div>
 </body>
 
-<?php require_once '../controller/HomeController.php';
-    echo "test";
+<?php require '../controller/HomeController.php';
     $topic = new showFrontpage();
     $topic->showFrontPage();
+    echo "test";
 ?>
 
 </html>
