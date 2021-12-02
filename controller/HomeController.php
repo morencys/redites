@@ -9,6 +9,8 @@ class showFrontpage{
         $password = "Bingo123!";
         $bdName = "redites";
 
+        echo "test";
+
         $connect = mysql_connect($servername, $username, $password) or die("Unable to connect to '$servername'");
         mysql_select_db($bdName) or die("Could not open the database '$bdName'");
         $result = mysql_query("SELECT * FROM tbltopic");
