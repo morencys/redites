@@ -51,7 +51,7 @@
     <!-- Form to add post -->
 
     <div class="container p-0 pt-5" id="addingPost" style="display:none">
-    <form action="view/addPost.php" method="post">
+    <form action="addPost.php" method="post">
         <div class="container p-0 pt-5">
             <div class="row p-3 py-0 border border-3 border-dark rounded">
                 <div class="row my-3">
