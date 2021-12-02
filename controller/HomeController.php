@@ -21,7 +21,7 @@ class showFrontpage{
         echo"</select>";
     }
 
-    public function addPost(){
+    public function addPost($title, $text){
         $servername = "192.168.10.15";
         $username = "redites";
         $password = "Bingo123!";
@@ -32,11 +32,8 @@ class showFrontpage{
 
         /*$topicId = $conn->query("SELECT topicId FROM tbltopic WHERE topicName = ". $_POST["topic"]);*/
 
-        echo $_POST["title"];
-        echo $_POST["postTextArea"];
-
         $sql = "INSERT INTO tblpost (postTopicId, postTitle, postText) values (?,?,?,?)";
-        $conn->prepare($sql)->execute([1, $_POST['title'], $_POST["postTextArea"]]);
+        $conn->prepare($sql)->execute([1, $title, $text]);
     }
 
     public function showPosts(){

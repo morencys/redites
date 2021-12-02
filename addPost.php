@@ -7,5 +7,5 @@
         echo $title = $_POST["title"];
         echo $postTextArea = $_POST["postTextArea"];
         $post = new showFrontpage(); 
-        $post->addPost();?>
+        $post->addPost($title, $postTextArea);?>
     </html>
