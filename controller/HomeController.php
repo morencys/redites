@@ -12,12 +12,16 @@ class showFrontpage{
         echo "test";
 
         $connect = mysql_connect($servername, $username, $password) or die("Unable to connect to '$servername'");
+        echo "test2";
         mysql_select_db($bdName) or die("Could not open the database '$bdName'");
+        echo "test3";
         $result = mysql_query("SELECT * FROM tbltopic");
+        echo "test4";
 
         while ($row = mysql_fetch_array($result, MYSQL_NUM)){
             printf("topic: %s", $row[0]);
         }
+        echo "test5";
     }
 
     public function addPost(){
