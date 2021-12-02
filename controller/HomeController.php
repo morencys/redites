@@ -30,10 +30,10 @@ class showFrontpage{
         $conn = new PDO("mysql:host=$servername;dbname=$bdName;charset=utf8", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $topicId = $conn->query("SELECT topicId FROM tbltopic WHERE topicName = ". $_REQUEST["topic"]);
+        $topicId = $conn->query("SELECT topicId FROM tbltopic WHERE topicName = ". $_POST["topic"]);
 
         $sql = "INSERT INTO tblpost (postTopicId, postTitle, postText) values (?,?,?,?)";
-        $conn->prepare($sql)->execute([$topicId, $_REQUEST['title'], $_REQUEST['text']]);
+        $conn->prepare($sql)->execute([$topicId, $_POST['title'], $_POST['text']]);
     }
 
     public function showPosts(){
