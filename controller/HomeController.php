@@ -1,4 +1,7 @@
 <?php
+
+use PDO;
+
 class showFrontpage{
     public function showFrontPage(){
         $servername = "192.168.10.15";
