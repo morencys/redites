@@ -1,7 +1,7 @@
 bonjour, va falloir que je push ces beaux changements !
 
-p q r s | (p v !q)
-f f f f
+p q r s | (p v !q) | (abcdefg12456)
+f f f f    v v v v v v v
 f f f v
 f f v f
 f f v v
