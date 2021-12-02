@@ -6,7 +6,7 @@ class showFrontpage{
         $password = "Bingo123!";
         $bdName = "redites";
         echo "test3";
-        $conn = new PDO("mysql:host=$servername;dbname=$bdName;charset=utf8", $username, $password);
+        $conn = mysqli_connect($servername, $username, $password, $bdName);
         echo "test4";
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         echo "test5";
