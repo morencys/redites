@@ -32,6 +32,9 @@ class showFrontpage{
 
         /*$topicId = $conn->query("SELECT topicId FROM tbltopic WHERE topicName = ". $_POST["topic"]);*/
 
+        echo $title;
+        echo $text;
+
         $sql = "INSERT INTO tblpost (postTopicId, postTitle, postText) values (?,?,?,?)";
         $conn->prepare($sql)->execute([1, $title, $text]);
     }
