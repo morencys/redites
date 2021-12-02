@@ -16,9 +16,9 @@ class showFrontpage{
             die('Could not connect: ' . mysql_error());
         }
         echo 'Connected successfully';
-        echo "test3";
-       
+        
         $topic = $conn->query("SELECT * FROM tbltopic");
+        echo "test3";
         
         while($topicInfo = $topic->fetch()){
             echo $topicInfo['topicName'];
