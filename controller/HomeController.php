@@ -18,7 +18,7 @@ class showFrontpage{
         echo 'Connected successfully';
         
         $topic = $conn->query("SELECT * FROM tbltopic");
-        echo array($topic);
+        dd($topic);
 
         while($topicInfo = $topic->fetch()){
             echo $topicInfo['topicName'];
