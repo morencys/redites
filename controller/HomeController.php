@@ -7,7 +7,7 @@ class showFrontpage{
         $bdName = "redites";
         echo "test3";
         $conn = mysqli_connect($servername, $username, $password, $bdName);
-        if (!$link) {
+        if (!$conn) {
             die('Could not connect: ' . mysql_error());
         }
         echo 'Connected successfully';
