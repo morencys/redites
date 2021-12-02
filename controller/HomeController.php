@@ -12,7 +12,7 @@ class showFrontpage{
         while($topicInfo = $topic->fetch()){
             echo $topicInfo['topicName'];
         }
-        dd($topic);
+        echo "test2";
     }
 
     public function addPost(){
