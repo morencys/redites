@@ -3,25 +3,23 @@
 use PDO;
 
 class showFrontpage{
-    public function showFrontPage(){
+    public function showTopic(){
         $servername = "192.168.10.15";
         $username = "redites";
         $password = "Bingo123!";
         $bdName = "redites";
 
-        echo "test";
         $conn = new PDO("mysql:host=$servername;dbname=$bdName;charset=utf8", $username, $password);
-        echo "test2";
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "test3";
         
         $topic = $conn->query("SELECT * FROM tbltopic");
-        echo "test4";
 
+        echo "<label for='topic'>Topic: </label>
+            <select class='topic' name='topic'>";
         while($topicInfo = $topic->fetch()){
-            echo $topicInfo['topicName'];
+            echo "<option value='" . $topicInfo['topicName'] . "'></option>";
         }
-        echo "test5";
+        echo"</select>";
     }
 
     public function addPost(){
@@ -29,6 +27,7 @@ class showFrontpage{
         $username = "redites";
         $password = "Bingo123!";
         $bdName = "redites";
+
         $conn = new PDO("mysql:host=$servername;dbname=$bdName;charset=utf8", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -39,6 +38,7 @@ class showFrontpage{
         $username = "redites";
         $password = "Bingo123!";
         $bdName = "redites";
+
         $conn = new PDO("mysql:host=$servername;dbname=$bdName;charset=utf8", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
