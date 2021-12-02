@@ -5,21 +5,14 @@ class showFrontpage{
         $username = "redites";
         $password = "Bingo123!";
         $bdName = "redites";
-        echo "test3";
-        $conn = mysqli_connect($servername, $username, $password, $bdName);
-        if (!$conn) {
-            die('Could not connect: ' . mysql_error());
+
+        $connect = mysql_connect($servername, $username, $password) or die("Unable to connect to '$servername'");
+        mysql_select_db($bdName) or die("Could not open the database '$bdName'");
+        $result = mysql_query("SELECT * FROM tbltopic");
+
+        while ($row = mysql_fetch_array($result, MYSQL_NUM)){
+            printf("topic: %s", $row[0]);
         }
-        echo 'Connected successfully';
-        echo "test4";
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "test5";
-        $topic = $conn->query("SELECT * FROM tbltopic");
-        
-        while($topicInfo = $topic->fetch()){
-            echo $topicInfo['topicName'];
-        }
-        echo "test2";
     }
 
     public function addPost(){
