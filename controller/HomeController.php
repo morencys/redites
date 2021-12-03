@@ -30,13 +30,6 @@ class showFrontpage{
         $conn = new PDO("mysql:host=$servername;dbname=$bdName;charset=utf8", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        /*$topicId = $conn->query("SELECT topicId FROM tbltopic WHERE topicName = ". $_POST["topic"]);*/
-
-        echo $title;
-        echo $text;
-
-        /*$sql = "INSERT INTO tblpost (postTopicId, postTitle, postText) values (?,?,?)";
-        $conn->prepare($sql)->execute([1, "$title", "$text"]);*/
         $conn->exec("INSERT INTO tblpost (postUserId, postTopicId, postTitle, postText) VALUES (1, 1, '$title', '$text')");
 
     }
@@ -77,8 +70,6 @@ class showFrontpage{
             </div>
         </div>';
         }
-
-
     }
 }
 ?>

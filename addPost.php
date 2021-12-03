@@ -8,5 +8,5 @@ $title = $_POST["title"];
 $postTextArea = $_POST["postTextArea"];
 $post = new showFrontpage();
 $post->addPost($title, $postTextArea); ?>
-
+<meta http-equiv='refresh' content="document.location.href='/'">"
 </html>
