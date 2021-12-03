@@ -25,7 +25,7 @@
     <div class="container-fluid">
         <div class="row text-center border border-dark" style="background-color:#000000;">
             <div class="col">
-                <h1 class="text-white mt-2">Front page of the Internet</h1>
+                <h1 class="text-white mt-2">Front page of the Interwebz</h1>
             </div>
         </div>
     </div>
