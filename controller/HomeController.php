@@ -37,7 +37,7 @@ class showFrontpage{
 
         /*$sql = "INSERT INTO tblpost (postTopicId, postTitle, postText) values (?,?,?)";
         $conn->prepare($sql)->execute([1, "$title", "$text"]);*/
-        $conn->exec("INSERT INTO tblpost (postTopicId, postTitle, postText) values (1, '$title', '$text')");
+        $conn->exec("INSERT INTO tblpost (postTopicId, postTitle, postText) VALUES ('1', '$title', '$text')");
 
     }
 
